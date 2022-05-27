@@ -422,3 +422,7 @@ app.put("/oldOrder/insert", function (req, res) {
     }
   );
 });
+
+app.get("/game", function (req, res, next) {
+  res.render("game");
+});

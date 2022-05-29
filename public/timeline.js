@@ -26,7 +26,7 @@ function increamentHitsByOne() {
     x = this.id
     $.ajax({
         // url: `https://infinite-river-98790.herokuapp.com/timeline/increaseHits/${x}`,
-        url: `http://localhost:5000/increaseHits/${x}`,
+        url: `http://localhost:5000/timeline/increaseHits${x}`,
         type: "get",
         success: function() {   
             location.reload();  
@@ -38,7 +38,7 @@ function deleteContent() {
     x = this.id
     $.ajax({
         // url: `https://infinite-river-98790.herokuapp.com/timeline/remove/${x}`,
-        url: `http://localhost:5000/remove/${x}`,
+        url: `http://localhost:5000/timeline/remove/${x}`,
         type: "get",
         success: function() {   
             location.reload();  

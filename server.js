@@ -204,7 +204,8 @@ app.post("/register", async (req, res,) => {
     user = new UserModal({
         username,
         email,
-        password: hashedpass
+        password: hashedpass,
+        admin: false
     }) 
 
     await user.save();

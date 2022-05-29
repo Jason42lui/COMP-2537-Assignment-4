@@ -30,6 +30,8 @@
 
           <a href="/oldOrder"> Previous Orders </a>
 
+          <a href="/game"> Game </a>
+
           <a href="/personalCart"> Cart 🛒 </a>
         </div>
 
@@ -46,15 +48,13 @@
         <div class="profileContent">
           <h1>Profile</h1>
           <div class="profileInfo">
-            <%userList.forEach(users => {%>
             <div>
               <img src="profile.png" alt="" />
             </div>
             <div class="info">
-              <h3>Username: <%= users.username %></h3>
-              <h3>Email: <%= users.email %></h3>
+              <h3>Username: <%= userList[0].username %></h3>
+              <h3>Email: <%= userList[0].email %></h3>
             </div>
-            <%})%>
           </div>
         </div>
       </div>

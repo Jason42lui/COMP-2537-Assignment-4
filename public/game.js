@@ -6,9 +6,13 @@ counter = 0;
 gameCondition = false;
 winner = false;
 winCon = 0;
+
 const array = Array(9)
   .fill()
   .map(() => Math.ceil(151 * Math.random()));
+
+var now = new Date(Date.now());
+var formatted = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
 function loadTwelvePokemon() {
   counter = 12;
@@ -225,7 +229,8 @@ function setup() {
           console.log("A Match!");
           $(`#${firstCard.id}`).parent().off("click");
           $(`#${secondCard.id}`).parent().off("click");
-          winner++;
+          winCon++;
+          console.log(winCon)
         } else {
           console.log("not a Match!");
           lock = true;
@@ -238,18 +243,53 @@ function setup() {
         if (counter === 0) {
           gameCondition = true;
         }
-        if (winCon % 3) {
+        if (counter === 0 && !(winCon % 3)) {
           gameCondition = true;
           winner = true;
         }
       }
     } else if (gameCondition && winner) {
       alert("You won!");
-
+      insertSearchEventWinner();
     } else {
       alert("You lost");
+      insertSearchEventLoser();
     }
   });
+}
+
+function insertSearchEventWinner() {
+    console.log("winner")
+    $.ajax({
+        // url: "https://infinite-river-98790.herokuapp.com/timeline/input",
+        url: "http://localhost:5000/timeline/input",
+        type: "put",
+        data: {
+            text: `Client has WON a memory game!`,
+            time: `${now}`,
+            hits: 1
+        },
+        success: function (r) {
+            console.log(r)
+        }
+    })
+}
+
+function insertSearchEventLoser() {
+    console.log("loser")
+    $.ajax({
+        // url: "https://infinite-river-98790.herokuapp.com/timeline/input",
+        url: "http://localhost:5000/timeline/input",
+        type: "put",
+        data: {
+            text: `Client has LOST a memory game!`,
+            time: `${now}`,
+            hits: 1
+        },
+        success: function (r) {
+            console.log(r)
+        }
+    })
 }
 
 $(document).ready(setup);

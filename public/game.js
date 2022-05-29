@@ -2,13 +2,19 @@ secondCard = undefined;
 firstCard = undefined;
 cardHasBeenFlipped = false;
 lock = false;
+counter = 0;
+gameCondition = false;
+winner = false;
+winCon = 0;
 const array = Array(9)
   .fill()
   .map(() => Math.ceil(151 * Math.random()));
 
 function loadTwelvePokemon() {
+  counter = 12;
   $("main").empty();
   $("main").append(`
+  <p> You have ${counter} clicks </p>
     <div id="game_grid">
     <div class="card" data-framework="1">
         <img id="img1" class="front_face" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${array[0]}.png">
@@ -63,8 +69,10 @@ function loadTwelvePokemon() {
 }
 
 function loadSixPokemon() {
+  counter = 6;
   $("main").empty();
   $("main").append(`
+  <p> You have ${counter} clicks </p>
       <div id="game_grid">
       <div class="card" data-framework="1">
           <img id="img1" class="front_face" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${array[0]}.png">
@@ -94,8 +102,10 @@ function loadSixPokemon() {
                 `);
 }
 function loadSixteenPokemon() {
+  counter = 18;
   $("main").empty();
   $("main").append(`
+    <p> You have ${counter} clicks </p>
       <div id="game_grid">
       <div class="card" data-framework="1">
           <img id="img1" class="front_face" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${array[0]}.png">
@@ -187,42 +197,61 @@ function gameOptions() {
 
 function setup() {
   $(".startButton").on("click", gameOptions);
-  $("main").on("click", '#gameOption1', loadSixPokemon);
-  $("main").on("click", '#gameOption2', loadTwelvePokemon);
-  $("main").on("click", '#gameOption3', loadSixteenPokemon);
-  $("main").on("click", '.card', function () {
-    if (lock) return;
-    $(this).toggleClass("flip");
+  $("main").on("click", "#gameOption1", loadSixPokemon);
+  $("main").on("click", "#gameOption2", loadTwelvePokemon);
+  $("main").on("click", "#gameOption3", loadSixteenPokemon);
+  $("main").on("click", ".card", function () {
+    if (!gameCondition) {
+      if (lock) return;
+      $(this).toggleClass("flip");
+      counter--;
 
-    if (!cardHasBeenFlipped) {
-      //captured first card
-      firstCard = $(this).find(".front_face")[0];
-      cardHasBeenFlipped = true;
-      $(this).css("pointer-events", "none");
-    } else {
-      $(this).css("pointer-events", "auto");
-      secondCard = $(this).find(".front_face")[0];
-      console.log(firstCard, secondCard);
-      cardHasBeenFlipped = false;
-
-      // check if you have match
-      if (
-        $(`#${firstCard.id}`).attr("src") == $(`#${secondCard.id}`).attr("src")
-      ) {
-        console.log("A Match!");
-        $(`#${firstCard.id}`).parent().off("click");
-        $(`#${secondCard.id}`).parent().off("click");
+      if (!cardHasBeenFlipped) {
+        //captured first card
+        firstCard = $(this).find(".front_face")[0];
+        cardHasBeenFlipped = true;
+        $(this).css("pointer-events", "none");
       } else {
-        console.log("not a Match!");
-        lock = true;
-        setTimeout(() => {
-          $(`#${firstCard.id}`).parent().removeClass("flip");
-          $(`#${secondCard.id}`).parent().removeClass("flip");
-          lock = false;
-        }, 1000);
+        $(this).css("pointer-events", "auto");
+        secondCard = $(this).find(".front_face")[0];
+        console.log(firstCard, secondCard);
+        cardHasBeenFlipped = false;
+
+        // check if you have match
+        if (
+          $(`#${firstCard.id}`).attr("src") ==
+          $(`#${secondCard.id}`).attr("src")
+        ) {
+          console.log("A Match!");
+          $(`#${firstCard.id}`).parent().off("click");
+          $(`#${secondCard.id}`).parent().off("click");
+          winner++;
+        } else {
+          console.log("not a Match!");
+          lock = true;
+          setTimeout(() => {
+            $(`#${firstCard.id}`).parent().removeClass("flip");
+            $(`#${secondCard.id}`).parent().removeClass("flip");
+            lock = false;
+          }, 1000);
+        }
+        if (counter === 0) {
+          gameCondition = true;
+        }
+        if (winCon % 3) {
+          gameCondition = true;
+          winner = true;
+        }
       }
+    } else if (gameCondition && winner) {
+      alert("You won!");
+
+    } else {
+      alert("You lost");
     }
   });
 }
 
 $(document).ready(setup);
+
+

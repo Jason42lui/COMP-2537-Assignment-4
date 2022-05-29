@@ -42,6 +42,10 @@
             <a href="/personalCart">
                 Cart 🛒
             </a>
+
+            <% if (userList[0].admin) { %>
+                <a href="/accounts">View All Accounts</a>
+              <% } %>
         </div>
 
         <form action="/logout" method="POST">

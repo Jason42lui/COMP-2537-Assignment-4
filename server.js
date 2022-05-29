@@ -158,6 +158,55 @@ app.get("/timeline", function (req, res, next) {
   })
 });
 
+app.get("/index", function (req, res, next) {
+  UserModal.find({}, function(err, users) {
+    res.render('index', {
+      userList: users
+    })
+  })
+});
+
+app.get("/game", function (req, res, next) {
+  UserModal.find({}, function(err, users) {
+    res.render('game', {
+      userList: users
+    })
+  })
+});
+
+// not working????
+app.get("/search_page", function (req, res, next) {
+  UserModal.find({}, function(err, users) {
+    res.render('search_page', {
+      userList: users
+    })
+  })
+});
+
+app.get("/oldOrder", function (req, res, next) {
+  UserModal.find({}, function(err, users) {
+    res.render('oldOrder', {
+      userList: users
+    })
+  })
+});
+
+app.get("/accounts", function (req, res, next) {
+  UserModal.find({}, function(err, users) {
+    res.render('accounts', {
+      userList: users
+    })
+  })
+});
+
+app.get("/personalCart", function (req, res, next) {
+  UserModal.find({}, function(err, users) {
+    res.render('personalCart', {
+      userList: users
+    })
+  })
+});
+
 app.get("/login", function (req, res, next) {
   res.render("login");
 });
@@ -426,4 +475,95 @@ app.put("/oldOrder/insert", function (req, res) {
 
 app.get("/game", function (req, res, next) {
   res.render("game");
+});
+
+app.get("/accounts", function (req, res, next) {
+  res.render("accounts");
+});
+
+app.get("/accounts/getAllAccounts", function (req, res) {
+  UserModal.find({}, function (err, data) {
+    if (err) {
+      console.log("Error " + err);
+    } else {
+      console.log("Data " + data);
+    }
+    res.send(data);
+  });
+});
+
+app.put("/accounts/input", function (req, res) {
+  console.log(req.body);
+  eventModel.create(
+    {
+      username: req.body.text,
+      email: req.body.time,
+      password: req.body.hits,
+    },
+    function (err, data) {
+      if (err) {
+        console.log("Error " + err);
+      } else {
+        console.log("Data " + data);
+      }
+      res.send(data);
+    }
+  );
+});
+
+app.get("/accounts/giveAdmin/:id", function (req, res) {
+  console.log(req.params);
+  eventModel.updateOne(
+    {
+      _id: req.params.id,
+    },
+    {
+      admin: true
+    },
+    function (err, data) {
+      if (err) {
+        console.log("Error " + err);
+      } else {
+        console.log("Data " + data);
+      }
+      res.send("Update is good");
+    }
+  );
+});
+
+app.get("/accounts/removeAdmin/:id", function (req, res) {
+  console.log(req.params);
+  eventModel.updateOne(
+    {
+      _id: req.params.id,
+    },
+    {
+      admin: false
+    },
+    function (err, data) {
+      if (err) {
+        console.log("Error " + err);
+      } else {
+        console.log("Data " + data);
+      }
+      res.send("Update is good");
+    }
+  );
+});
+
+app.get("/accounts/remove/:id", function (req, res) {
+  console.log(req.params);
+  eventModel.remove(
+    {
+      _id: req.params.id,
+    },
+    function (err, data) {
+      if (err) {
+        console.log("Error " + err);
+      } else {
+        console.log("Data " + data);
+      }
+      res.send("Delete is good");
+    }
+  );
 });

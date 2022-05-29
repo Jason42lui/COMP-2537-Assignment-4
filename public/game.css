@@ -1,9 +1,32 @@
-body {
-    margin: 0;
-}
 * {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
+body {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameOption1, #gameOption2, #gameOption3, .startButton {
+    width: 8rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: #fff;
+}
+
+#gameOption1, #gameOption2, #gameOption3 {
+    margin: 2rem 2rem;
+}
+
+ 
+
 
 #dummy_div {
     display: flex;

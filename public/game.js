@@ -7,6 +7,7 @@ const array = Array(9)
   .map(() => Math.ceil(151 * Math.random()));
 
 function loadTwelvePokemon() {
+  $("main").empty();
   $("main").append(`
     <div id="game_grid">
     <div class="card" data-framework="1">
@@ -62,6 +63,7 @@ function loadTwelvePokemon() {
 }
 
 function loadSixPokemon() {
+  $("main").empty();
   $("main").append(`
       <div id="game_grid">
       <div class="card" data-framework="1">
@@ -92,6 +94,7 @@ function loadSixPokemon() {
                 `);
 }
 function loadSixteenPokemon() {
+  $("main").empty();
   $("main").append(`
       <div id="game_grid">
       <div class="card" data-framework="1">
@@ -170,9 +173,24 @@ function loadSixteenPokemon() {
                 `);
 }
 
+function gameOptions() {
+  $("main").empty();
+  $("main").append(`
+    <h1> Select your grid layout for the game</h1>
+    <div class="optionWrapper">
+    <button id="gameOption1"> 2 x 3 </button>
+    <button id="gameOption2"> 4 x 3 </button>
+    <button id="gameOption3"> 6 x 3 </button>
+    </div>
+    `);
+}
+
 function setup() {
-  loadSixteenPokemon();
-  $(".card").on("click", function () {
+  $(".startButton").on("click", gameOptions);
+  $("main").on("click", '#gameOption1', loadSixPokemon);
+  $("main").on("click", '#gameOption2', loadTwelvePokemon);
+  $("main").on("click", '#gameOption3', loadSixteenPokemon);
+  $("main").on("click", '.card', function () {
     if (lock) return;
     $(this).toggleClass("flip");
 

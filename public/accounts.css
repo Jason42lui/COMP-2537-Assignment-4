@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    background-color: yellow;
 }
 
 main {
@@ -87,7 +88,7 @@ img {
     height: 100%;
 }
 .accountWrapper {
-    padding-left: 15rem;
+    padding-left: 10rem;
     display: flex;
     width: 65%;
     flex-direction: column;
@@ -102,21 +103,41 @@ img {
     width: 35%;
     flex-direction: column;
     align-items: center;
-}
-/* .buttonContainers {
-    display: flex;
-}
-
-.buttonContainers button{
-    margin: 1rem;
+    background-color: darkslateblue;
+    border-radius: 2rem;
+    margin-left: 3rem;
+    padding: 2rem;
 }
 
 .cardContent {
-    width: 10rem;
-    height: 2rem;
-    display: flex;
-} */
+    background-color: darkslateblue;
+    padding: 1rem;
+    border-radius: 2rem;
+}
 
+.giveButtons, .removeButtons, .deleteButtons {
+    color: #fff;
+    margin: 0rem 2rem;
+    padding: 0.5rem;
+    font-size: medium;
+}
+
+form div {
+    margin: 2rem 0rem;
+}
+form button {
+    color: #fff;
+    padding: 0.5rem;
+    font-size: medium;
+}
+
+form label {
+    font-size: large;
+}
+
+form input{
+    font-size: large;
+}
 @media screen and (max-width: 800px) {
 
     main,

@@ -11,16 +11,16 @@ function loadEvents(){
                 if (x[i].username === 'test1') {
                     $(".accountWrapper").append(`
                     <div class="cardContent" id="${x[i]["_id"]}">
-                    <h3> <span>Username:</span> ${x[i].username} </h3>
-                    <h3> <span>Email:</span> ${x[i].email} </h3>
-                    <h5> <span>Admin Status:</span> ${x[i].admin} </h5>
+                    <h2> <span>Username:</span> ${x[i].username} </h2>
+                    <h2> <span>Email:</span> ${x[i].email} </h2>
+                    <h4> <span>Admin Status:</span> ${x[i].admin} </h4>
                     `)
                 } else
                 $(".accountWrapper").append(`
                 <div class="cardContent" id="${x[i]["_id"]}">
-                <h3> Username: ${x[i].username} </h3>
-                <h3> Email: ${x[i].email} </h3>
-                <h5> Admin Status: ${x[i].admin} </h5>
+                <h2> Username: ${x[i].username} </h2>
+                <h2> Email: ${x[i].email} </h2>
+                <h4> Admin Status: ${x[i].admin} </h4>
                 <div class="buttonContainers">
                 <button class="giveButtons" id="${x[i]["_id"]}"> Give Admin status</button>
                 <button class="removeButtons" id="${x[i]["_id"]}"> Remove Admin status</button> 
@@ -35,7 +35,7 @@ function loadEvents(){
 function giveAdmin() {
     x = this.id
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/timeline/increaseHits/${x}`,
+        // url: `https://infinite-river-98790.herokuapp.com/giveAdmin/${x}`,
         url: `http://localhost:5000/accounts/giveAdmin/${x}`,
         type: "get",
         success: function() {   
@@ -47,7 +47,7 @@ function giveAdmin() {
 function removeAdmin() {
     x = this.id
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/timeline/remove/${x}`,
+        // url: `https://infinite-river-98790.herokuapp.com/accounts/removeAdmin/${x}`,
         url: `http://localhost:5000/accounts/removeAdmin/${x}`,
         type: "get",
         success: function() {   

@@ -494,11 +494,12 @@ app.get("/accounts/getAllAccounts", function (req, res) {
 
 app.put("/accounts/input", function (req, res) {
   console.log(req.body);
-  eventModel.create(
+  UserModal.create(
     {
-      username: req.body.text,
-      email: req.body.time,
-      password: req.body.hits,
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      admin: req.body.admin
     },
     function (err, data) {
       if (err) {
@@ -513,7 +514,7 @@ app.put("/accounts/input", function (req, res) {
 
 app.get("/accounts/giveAdmin/:id", function (req, res) {
   console.log(req.params);
-  eventModel.updateOne(
+  UserModal.updateOne(
     {
       _id: req.params.id,
     },
@@ -533,7 +534,7 @@ app.get("/accounts/giveAdmin/:id", function (req, res) {
 
 app.get("/accounts/removeAdmin/:id", function (req, res) {
   console.log(req.params);
-  eventModel.updateOne(
+  UserModal.updateOne(
     {
       _id: req.params.id,
     },
@@ -553,7 +554,7 @@ app.get("/accounts/removeAdmin/:id", function (req, res) {
 
 app.get("/accounts/remove/:id", function (req, res) {
   console.log(req.params);
-  eventModel.remove(
+  UserModal.remove(
     {
       _id: req.params.id,
     },

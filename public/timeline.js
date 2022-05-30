@@ -26,7 +26,7 @@ function increamentHitsByOne() {
     x = this.id
     $.ajax({
         // url: `https://infinite-river-98790.herokuapp.com/timeline/increaseHits/${x}`,
-        url: `http://localhost:5000/timeline/increaseHits${x}`,
+        url: `http://localhost:5000/timeline/increaseHits/${x}`,
         type: "get",
         success: function() {   
             location.reload();  

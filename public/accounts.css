@@ -8,8 +8,7 @@ body {
 
 main {
     display: flex;
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -87,6 +86,36 @@ img {
     width: 100%;
     height: 100%;
 }
+.accountWrapper {
+    padding-left: 15rem;
+    display: flex;
+    width: 65%;
+    flex-direction: column;
+}
+
+.accountWrapper div{
+    margin-top: 2rem;
+}
+
+.register-form{
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+    align-items: center;
+}
+/* .buttonContainers {
+    display: flex;
+}
+
+.buttonContainers button{
+    margin: 1rem;
+}
+
+.cardContent {
+    width: 10rem;
+    height: 2rem;
+    display: flex;
+} */
 
 @media screen and (max-width: 800px) {
 

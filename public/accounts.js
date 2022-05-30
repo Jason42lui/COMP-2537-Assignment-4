@@ -2,8 +2,8 @@ x = 0
 
 function loadEvents(){
     $.ajax({
-        // url: "https://infinite-river-98790.herokuapp.com/accounts/getAllAccounts",
-        url: "http://localhost:5000/accounts/getAllAccounts",
+        url: "https://infinite-river-98790.herokuapp.com/accounts/getAllAccounts",
+        // url: "http://localhost:5000/accounts/getAllAccounts",
         type: "get",
         success: (x)=>{
             console.log(x)
@@ -35,8 +35,8 @@ function loadEvents(){
 function giveAdmin() {
     x = this.id
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/giveAdmin/${x}`,
-        url: `http://localhost:5000/accounts/giveAdmin/${x}`,
+        url: `https://infinite-river-98790.herokuapp.com/accounts/giveAdmin/${x}`,
+        // url: `http://localhost:5000/accounts/giveAdmin/${x}`,
         type: "get",
         success: function() {   
             location.reload();  
@@ -47,8 +47,8 @@ function giveAdmin() {
 function removeAdmin() {
     x = this.id
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/accounts/removeAdmin/${x}`,
-        url: `http://localhost:5000/accounts/removeAdmin/${x}`,
+        url: `https://infinite-river-98790.herokuapp.com/accounts/removeAdmin/${x}`,
+        // url: `http://localhost:5000/accounts/removeAdmin/${x}`,
         type: "get",
         success: function() {   
             location.reload();  
@@ -59,8 +59,8 @@ function removeAdmin() {
 function deleteContent() {
     x = this.id
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/timeline/remove/${x}`,
-        url: `http://localhost:5000/accounts/remove/${x}`,
+        url: `https://infinite-river-98790.herokuapp.com/accounts/remove/${x}`,
+        // url: `http://localhost:5000/accounts/remove/${x}`,
         type: "get",
         success: function() {   
             location.reload();  

@@ -261,8 +261,8 @@ function setup() {
 function insertSearchEventWinner() {
     console.log("winner")
     $.ajax({
-        // url: "https://infinite-river-98790.herokuapp.com/timeline/input",
-        url: "http://localhost:5000/timeline/input",
+        url: "https://infinite-river-98790.herokuapp.com/timeline/input",
+        // url: "http://localhost:5000/timeline/input",
         type: "put",
         data: {
             text: `Client has WON a memory game!`,
@@ -278,8 +278,8 @@ function insertSearchEventWinner() {
 function insertSearchEventLoser() {
     console.log("loser")
     $.ajax({
-        // url: "https://infinite-river-98790.herokuapp.com/timeline/input",
-        url: "http://localhost:5000/timeline/input",
+        url: "https://infinite-river-98790.herokuapp.com/timeline/input",
+        // url: "http://localhost:5000/timeline/input",
         type: "put",
         data: {
             text: `Client has LOST a memory game!`,

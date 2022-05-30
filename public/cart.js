@@ -4,8 +4,8 @@ TotalCost = 0
 totalProduct = 0
 function loadEvents(){
     $.ajax({
-        // url: "https://infinite-river-98790.herokuapp.com/personalCart/allItems",
-        url: "http://localhost:5000/personalCart/allItems",
+        url: "https://infinite-river-98790.herokuapp.com/personalCart/allItems",
+        // url: "http://localhost:5000/personalCart/allItems",
         type: "get",
         success: (x)=>{
             console.log(x)
@@ -34,8 +34,8 @@ function loadEvents(){
 
 function loadTotalCost(){
     $.ajax({
-        // url: "https://infinite-river-98790.herokuapp.com/personalCart/allItems",
-        url: "http://localhost:5000/personalCart/allItems",
+        url: "https://infinite-river-98790.herokuapp.com/personalCart/allItems",
+        // url: "http://localhost:5000/personalCart/allItems",
         type: "get",
         success: (x)=>{
             console.log(x)
@@ -59,8 +59,8 @@ function increamentHitsByOne() {
     x = this.id
     console.log(this.id)
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/timeline/increaseHits/${x}`,
-        url: `http://localhost:5000/personalCart/increaseQuantity/${x}`,
+        url: `https://infinite-river-98790.herokuapp.com/personalCart/increaseQuantity/${x}`,
+        // url: `http://localhost:5000/personalCart/increaseQuantity/${x}`,
         type: "get",
         success: function() {   
             location.reload();  
@@ -73,8 +73,8 @@ function reductionHitsByOne() {
     x = this.id
     console.log(this.id)
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/timeline/increaseHits/${x}`,
-        url: `http://localhost:5000/personalCart/decreaseQuantity/${x}`,
+        url: `https://infinite-river-98790.herokuapp.com/personalCart/decreaseQuantity/${x}`,
+        // url: `http://localhost:5000/personalCart/decreaseQuantity/${x}`,
         type: "get",
         success: function() {   
             location.reload();  
@@ -85,8 +85,8 @@ function reductionHitsByOne() {
 function deleteOrder() {
     x = this.id
     $.ajax({
-        // url: `https://infinite-river-98790.herokuapp.com/timeline/remove/${x}`,
-        url: `http://localhost:5000/personalCart/remove/${x}`,
+        url: `https://infinite-river-98790.herokuapp.com/personalCart/remove/${x}`,
+        // url: `http://localhost:5000/personalCart/remove/${x}`,
         type: "get",
         success: function() {   
             location.reload();  
@@ -100,8 +100,8 @@ var formatted =
 
 function proceedPokemonOrder() {
   $.ajax({
-    // url: "https://infinite-river-98790.herokuapp.com/personalCart/insert",
-    url: "http://localhost:5000/oldOrder/insert",
+    url: "https://infinite-river-98790.herokuapp.com/oldOrder/insert",
+    // url: "http://localhost:5000/oldOrder/insert",
     type: "put",
     data: {
       Items: totalProduct,
@@ -116,8 +116,8 @@ function proceedPokemonOrder() {
 
 function removePokemonOrder() {
     $.ajax({
-      // url: "https://infinite-river-98790.herokuapp.com/personalCart/insert",
-      url: "http://localhost:5000/personalCart/remove",
+      url: "https://infinite-river-98790.herokuapp.com/personalCart/remove",
+    //   url: "http://localhost:5000/personalCart/remove",
       type: "get",
       success: function (r) {
         location.reload();  
